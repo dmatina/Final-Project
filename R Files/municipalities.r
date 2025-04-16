@@ -65,20 +65,47 @@ model_list_feiv <- list(
   "Net Migration" = model9
 )
 
+custom_stars = c('*' = 0.1, '**' = 0.05, '***' = 0.01)
 
-# OLS
+
+controls<- data.frame(
+  term = c("Other Geo Controls", "HC Controls"),
+   `Model 1` = c("Yes", "Yes"),
+  `Model 2` = c("Yes", "Yes"),
+  `Model 3` = c("Yes", "Yes")
+)
+
+
+FEs <- data.frame(
+  term = c("Other Geo Controls", "HC Controls","SLL Fixed Effects"),
+  `Model 1` = c("Yes", "Yes", "Yes"),
+  `Model 2` = c("Yes", "Yes", "Yes"),
+  `Model 3` = c("Yes", "Yes", "Yes")
+)
+
+attr(controls, "position") <- c(11,12)
+attr(FEs, "position") <- c(11,12)
+# OLS output
 modelsummary(model_list_ols,
-             output = "Output/Tables/ols_table.tex",
-             stars = TRUE,
-             title = "OLS Estimates")
+             output = "Output/Tables/ols_table.png",
+             title = "OLS Estimates",
+             coef_omit = "^(?!surname_concentration|density|alt_com|river|sea_distance)",
+             gof_map = c("nobs", "r.squared"),
+             stars = custom_stars,
+             add_rows=controls
+)
 
 
 # FE-IV
 modelsummary(model_list_feiv,
-             output = "Output/Tables/feiv_table.tex",
-             stars = TRUE,
-             title = "FE-IV Estimates")
-           
+             output = "Output/Tables/feiv_table.png",
+             title = "FE-IV Estimates",
+             coef_omit = "^(?!fit_surname_concentration|density|alt_com|river|sea_distance)",
+             gof_map = c("nobs", "r.squared"),
+             stars = custom_stars,
+             add_rows=FEs
+)
+
 
 
 
