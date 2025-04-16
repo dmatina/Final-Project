@@ -13,7 +13,7 @@ data <- data %>%
 data <- data %>% drop_na(fam_ties)
 
 # Load Shape file
-comuni_sf <- read_sf("Data/Shape Files/Municipality/Com01012018_g_WGS84.shp")
+comuni_sf <- read_sf("Data/Shape Files/Com01012018_g_WGS84.shp")
 
 # Load Municipality data
 data <- read_dta("Data/Clean/municipalities.dta")

@@ -7,7 +7,7 @@ library(modelsummary)
 data <- read_dta("Data/Clean/municipalities.dta")
 
 # Standardize family ties measure
-df$fam_ties <- scale(df$fam_ties)
+data$fam_ties <- scale(data$fam_ties)
 
 
 # Create custom set of controls
@@ -28,7 +28,7 @@ summary(model1)
 ## Inactivity
 model2 <- lm(reformulate(c("fam_ties", geo,educ), response = "inact_rate_1524y"), data = data)
 summary(model2)
-## Mobility
+## Net Migration
 model3 <- lm(reformulate(c("fam_ties", geo,educ), response = "net_migration_rate"), data = data)
 summary(model3)
 
@@ -44,7 +44,7 @@ summary(model7)
 model8 <- feols(inact_rate_1524y ~  density + alt_com + river + lake 
                + sea_distance + sh_mountain + d_alt + pop_res_2007 + litoraneo + high_school + college | idsll | fam_ties ~ rug_med , data = data)
 summary(model8)
-## Mobility
+## Net Migration
 model9 <- feols(net_migration_rate ~  density + alt_com + river + lake 
                + sea_distance + sh_mountain + d_alt + pop_res_2007 + litoraneo + high_school + college | idsll | fam_ties ~ rug_med , data = data)
 summary(model9)

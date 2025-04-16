@@ -4,10 +4,10 @@ library(dplyr)
 
 
 # Read the .dta files
-df1 <- read_dta("Data/Raw/Municipality/surnames_municipality.dta")
-df2 <- read_dta("Data/Raw/Municipality/Migration2004-2010.dta")
-df3 <- read_dta("Data/Raw/Municipality/corruptionANAC2015-2023.dta")
-df4 <- read_dta("Data/Raw/Municipality/15-24unempl2018comuni.dta")
+df1 <- read_dta("Data/Raw/surnames_municipality.dta")
+df2 <- read_dta("Data/Raw/Migration2004-2010.dta")
+df3 <- read_dta("Data/Raw/corruptionANAC2015-2023.dta")
+df4 <- read_dta("Data/Raw/15-24unempl2018comuni.dta")
 
 # Merge them step by step using full_join to keep all idcoms
 merged_df <- df1 %>%
