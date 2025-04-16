@@ -51,7 +51,8 @@ plot1<- ggplot(map_data) +
     legend.key.size = unit(0.4, "cm")
   ) 
 
-
+# Save the plot as a PNG
+ggsave("Output/Figures/surname_municipality.png",plot = plot1)
 
 plot2<- ggplot(map_data) +
   geom_sf(aes(fill = unempl_rate_1524y), color = NA) +
@@ -73,7 +74,7 @@ combined_plot <- plot1 + plot2  +
     theme = theme(
       plot.title = element_text( hjust = 0.5))) # side by side
 
-print(combined_plot)
+
 # Save the plot as a PNG
 ggsave("Output/Figures/fam_unempl_municipality.png",plot = combined_plot)
 
