@@ -50,12 +50,13 @@ merged_df <- merged_df %>%
 
 # Generate new variables
 merged_df <- merged_df %>%
-  mutate(fam_ties=-entropy,net_migration_rate = (net_internal_migration+net_abroad_migration) / pop2004*100,gross_migration_rate=(people_moving_internally+people_moving_abroad)/pop2004*100)
+  mutate(surname_concentration=-entropy,net_migration_rate = (net_internal_migration+net_abroad_migration) / pop2004*100,gross_migration_rate=(people_moving_internally+people_moving_abroad)/pop2004*100)
 
 merged_df$unempl_rate_1524y <- merged_df$unempl_rate_1524y * 100
 merged_df$inact_rate_1524y <- merged_df$inact_rate_1524y * 100
 
 write_dta(merged_df, "Data/Clean/municipalities.dta")
+
 
 
 
